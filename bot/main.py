@@ -1,9 +1,15 @@
 """
-Bot Principal - Sunflower Discord Bot
+Bot Principal - Chicago Discord Bot
 """
 import discord
 from discord.ext import commands
 import os
+import sys
+
+# Mudar para o diretório do script
+os.chdir(os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(__file__))
+
 from config import DISCORD_TOKEN, GUILD_ID
 
 
@@ -36,7 +42,7 @@ async def on_ready():
 
 async def load_cogs():
     """Carrega todos os cogs da pasta cogs"""
-    cogs_dir = 'cogs'
+    cogs_dir = os.path.join(os.path.dirname(__file__), 'cogs')
     for filename in os.listdir(cogs_dir):
         if filename.endswith('.py') and not filename.startswith('_'):
             cog_name = filename[:-3]

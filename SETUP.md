@@ -26,16 +26,21 @@
 
 ### 3. Adicionar o Bot ao Servidor
 1. Ainda em https://discord.com/developers/applications
-2. Vá para "OAuth2" → "URL Generator"
-3. Selecione os escopos: `bot`
-4. Selecione as permissões:
+2. Se o portal exigir, configure um **Redirect URI** em "OAuth2" → "Redirects":
+   - Use: `http://localhost:8000/callback` (ou qualquer porta que preferir)
+   - Salve as alterações
+3. Vá para "OAuth2" → "URL Generator"
+4. Selecione os escopos: `bot`
+5. Selecione as permissões:
    - Send Messages
    - Embed Links
    - Add Reactions
    - Read Message History
    - Manage Messages
-5. Copie a URL gerada e abra no navegador
-6. Selecione o servidor e autorize
+6. Copie a URL gerada e abra no navegador
+7. Selecione o servidor e autorize
+
+**💡 Nota**: O Redirect URI é apenas um campo obrigatório no portal — para adicionar um bot, essa URI não será chamada. Use `http://localhost:8000/callback` ou similar.
 
 ### 4. Configurar o Arquivo .env
 Na pasta `bot/`, crie um arquivo `.env` com:

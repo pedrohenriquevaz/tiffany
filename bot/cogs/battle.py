@@ -116,22 +116,25 @@ class BattleCog(commands.Cog):
             'accepted': {}
         }
         
-        # Aguardar respostas
-        await self._wait_for_confirmations(
-            interaction.guild.id,
-            battle_message,
-            champion1,
-            champion2,
-            timeout
-        )
-        
+        # Responder à interação IMEDIATAMENTE (Discord timeout = 3s)
         await interaction.response.send_message(
             f'✅ Duelo iniciado! Verifique {channel.mention}',
             ephemeral=True
         )
+        
+        # Aguardar respostas em background (sem bloquear)
+        asyncio.create_task(
+            self._wait_for_confirmations(
+                interaction.guild.id,
+                battle_message,
+                champion1,
+                champion2,
+                timeout
+            )
+        )
     
     @discord.app_commands.command(
-        name='prizePool',
+        name='prize_pool',
         description='Configura o texto de premiação para os duelos'
     )
     async def prize_pool_command(
@@ -159,7 +162,7 @@ class BattleCog(commands.Cog):
         await interaction.response.send_message(embed=embed)
     
     @discord.app_commands.command(
-        name='battleChat',
+        name='battle_chat',
         description='Define o canal onde os duelos acontecerão'
     )
     @discord.app_commands.describe(
@@ -190,7 +193,7 @@ class BattleCog(commands.Cog):
         await interaction.response.send_message(embed=embed)
     
     @discord.app_commands.command(
-        name='setTime',
+        name='set_time',
         description='Configura o tempo limite para aceitar um duelo'
     )
     async def set_time_command(
@@ -225,7 +228,7 @@ class BattleCog(commands.Cog):
         await interaction.response.send_message(embed=embed)
     
     @discord.app_commands.command(
-        name='messageRun',
+        name='message_run',
         description='Configura a mensagem quando um usuário não aceita o duelo'
     )
     async def message_run_command(
@@ -253,7 +256,7 @@ class BattleCog(commands.Cog):
         await interaction.response.send_message(embed=embed)
     
     @discord.app_commands.command(
-        name='messageBattle',
+        name='message_battle',
         description='Configura a mensagem de início do duelo'
     )
     async def message_battle_command(
