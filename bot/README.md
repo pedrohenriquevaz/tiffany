@@ -1,29 +1,16 @@
-# Sunflower Discord Bot
+# Discord Bot - Versão Renovada
 
-Um bot de Discord desenvolvido em Python com recursos de automatização e jogos.
+Um bot de Discord desenvolvido em Python pronto para desenvolvimento de novas funcionalidades.
 
-## Recursos Implementados
+## ℹ️ Sobre
 
-### 1. Comando /bump
-- Automatização para manter o servidor ativo no Disboard
-- Cooldown de 2 horas entre execuções
-- Mensagem de feedback ao usuário
+Este é o núcleo base do bot com todos os sistemas legados removidos. Está pronto para que você adicione novos comandos e funcionalidades conforme necessário.
 
-### 2. Comando /battle
-- Sorteia 2 usuários para um duelo (X1)
-- Filtra usuários ativos no dia
-- Agrupa usuários por tier (cargo)
-- Sistema de reações para confirmação
-- Timeout configurável
+## 📖 Documentação
 
-### 3. Comandos de Configuração
-- `/battleChat [canal]` - Define o canal para duelos
-- `/prizePool [texto]` - Configura a premiação
-- `/setTime [segundos]` - Define tempo limite para resposta
-- `/messageRun [mensagem]` - Mensagem de timeout
-- `/messageBattle [mensagem]` - Mensagem de início do duelo
+Para ver a lista de comandos e como criar novos, consulte [../commands.md](../commands.md)
 
-## Instalação
+## 🚀 Instalação
 
 1. Clone o repositório
 2. Navegue para a pasta `bot/`

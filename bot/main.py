@@ -1,5 +1,5 @@
 """
-Bot Principal - Chicago Discord Bot
+Bot Principal - Versão Renovada
 """
 import discord
 from discord.ext import commands
@@ -10,7 +10,7 @@ import sys
 os.chdir(os.path.dirname(__file__))
 sys.path.insert(0, os.path.dirname(__file__))
 
-from config import DISCORD_TOKEN, GUILD_ID
+from config import DISCORD_TOKEN, GUILD_ID, COMMAND_PREFIX
 
 
 # Intents
@@ -18,10 +18,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 intents.reactions = True
+intents.presences = True  # Necessário para acessar status dos membros
 
 # Criação do bot
 bot = commands.Bot(
-    command_prefix='!',
+    command_prefix=COMMAND_PREFIX,
     intents=intents,
     help_command=None,
     application_id=None
@@ -31,13 +32,13 @@ bot = commands.Bot(
 @bot.event
 async def on_ready():
     """Executado quando o bot está pronto"""
-    print(f'Bot {bot.user} está online!')
+    print(f'✅ Bot {bot.user} está online!')
     try:
         # Sincronizar slash commands
         synced = await bot.tree.sync()
-        print(f'Sincronizados {len(synced)} slash commands')
+        print(f'✅ Sincronizados {len(synced)} slash commands')
     except Exception as e:
-        print(f'Erro ao sincronizar slash commands: {e}')
+        print(f'❌ Erro ao sincronizar slash commands: {e}')
 
 
 async def load_cogs():
